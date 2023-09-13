@@ -1,0 +1,24 @@
+{
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "OM Theme (Default Dracula Italic)",
+    "explorer.confirmDelete": false,
+    "explorer.compactFolders":false, 
+    "explorer.confirmDragAndDrop": false,
+    "code-runner.runInTerminal": true,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.executorMap": {
+        "python": " cls ; python -u"
+       
+    },
+    "[python]": {
+        "editor.formatOnType": true
+    },
+
+"code-runner.ignoreSelection": true,
+"python.defaultInterpreterPath": "python",
+"workbench.editor.enablePreview": false,
+"git.enableSmartCommit": true,
+"git.autofetch": true,
+"workbench.iconTheme": "vscode-icons"
+
+}
