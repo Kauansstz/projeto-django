@@ -201,7 +201,7 @@ h1,h2,h3,h4,h5,h6{
 
 .recipe-meta-container {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     padding: var(--spacing-gutter-medium);
     
 }
@@ -232,6 +232,20 @@ h1,h2,h3,h4,h5,h6{
 .recipe-footer a:hover{
     filter: brightness(2);
 }
+
+.main-content-detail  .recipe-list-item{
+    max-width: 84rem;
+    margin: 0 auto;
+}
+
+.main-content-detail  .recipe-list-item:hover{
+    transform: scale(1);
+    box-shadow: -5px 5px 15px rgba( 0, 0, 0, 0.2);
+    overflow: hidden;
+
+}
+
+
 
 .main-footer{
     display: flex;
