@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     name = models.CharField(max_length=65)
+    
     def __str__(self):
         return self.name
 
@@ -28,5 +29,6 @@ class Recipe(models.Model):
     )
     def __str__(self):
         return self.title
-    
+
+# if __name__ == '__main__':
     
