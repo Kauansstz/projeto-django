@@ -2,14 +2,16 @@ from django.shortcuts import render, get_list_or_404
 from .models import Recipe
 from django.db.models import Q
 from django.http import Http404
-from django.core.paginator import Paginator
 from utils.paginitions import make_pagination
+import os
+
+PER_PAGE = os.environ.get("PER_PAGE", 6)
 
 
 def home(request):
     recipes = Recipe.objects.filter(is_published=True).order_by("-id")
 
-    page_obj, pagination_page = make_pagination(request, recipes, 9)
+    page_obj, pagination_page = make_pagination(request, recipes, PER_PAGE)
 
     return render(
         request,
@@ -25,7 +27,7 @@ def category(request, id):
     recipes = get_list_or_404(
         Recipe.objects.filter(category__id=id, is_published=True).order_by("-id")
     )
-    page_obj, pagination_page = make_pagination(request, recipes, 9)
+    page_obj, pagination_page = make_pagination(request, recipes, PER_PAGE)
     return render(
         request,
         "recipes/pages/category.html",
@@ -61,7 +63,7 @@ def search(request):
         is_published=True,
     ).order_by("-id")
 
-    page_obj, pagination_page = make_pagination(request, recipes, 9)
+    page_obj, pagination_page = make_pagination(request, recipes, PER_PAGE)
 
     return render(
         request,
