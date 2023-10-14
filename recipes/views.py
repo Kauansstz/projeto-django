@@ -3,7 +3,7 @@ from .models import Recipe
 from django.db.models import Q
 from django.http import Http404
 from utils.paginitions import make_pagination
-from django.contrib import messages
+
 import os
 
 PER_PAGE = int(os.environ.get("PER_PAGE", 6))
@@ -14,7 +14,6 @@ def home(request):
 
     page_obj, pagination_page = make_pagination(request, recipes, PER_PAGE)
 
-    messages.success(request, "ofdiojfdiojdfijo")
     return render(
         request,
         "recipes/pages/home.html",
@@ -60,7 +59,7 @@ def search(request):
 
     recipes = Recipe.objects.filter(
         Q(
-            Q(title__icontains=search_term) | Q(decription__icontains=search_term),
+            Q(title__icontains=search_term) | Q(description__icontains=search_term),
         ),
         is_published=True,
     ).order_by("-id")
