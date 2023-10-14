@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "recipes",
     "stdimage",
     "bootstrap4",
+    "authors",
 ]
 
 MIDDLEWARE = [
