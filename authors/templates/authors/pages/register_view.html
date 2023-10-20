@@ -29,6 +29,15 @@
                     <button type="submit">Send</button>
                 </div>
             </div>
+            {% if form.errors %}
+            <div class="form-content form-content-grid">
+                <div class="form-group">
+                    <div class="massage message-error">    
+                        Por Favor corrija os errors no formulário
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </form>
     </div>
 {% endblock content %}

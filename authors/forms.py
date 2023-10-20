@@ -1,5 +1,7 @@
+from typing import Any
 from django import forms
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 
 class RegisterForm(forms.ModelForm):
@@ -36,3 +38,31 @@ class RegisterForm(forms.ModelForm):
             "email": forms.TextInput(attrs={"placeholder": "E-mail..."}),
             "password": forms.PasswordInput(attrs={"placeholder": "Password..."}),
         }
+
+    def clean_password(self):
+        data = self.cleaned_data.get("password")
+
+        if "atenção" in data:
+            raise ValidationError(
+                "Não digite %(value)s no Password",
+                code="invalid",
+                params={"value": '"atenção"'},
+            )
+
+        return data
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get("password")
+        confirm_password = cleaned_data.get("confirm_password")
+
+        if password != confirm_password:
+            value = ValidationError(
+                "Password and Confirm Password must be equal", code="invalid"
+            )
+            raise ValidationError(
+                {
+                    "password": value,
+                    "confirm_password": value,
+                }
+            )
