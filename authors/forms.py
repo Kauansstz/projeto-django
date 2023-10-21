@@ -2,6 +2,20 @@ from typing import Any
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+import re
+
+
+def strong_password(password):
+    regex = re.compile(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$")
+    if not regex.match(password):
+        raise ValidationError(
+            (
+                "Password must have at least one uppercase letter."
+                "one lowercasa letter and one number. The lenght should be "
+                "at least 8 characters"
+            ),
+            code="Invalid",
+        )
 
 
 class RegisterForm(forms.ModelForm):
@@ -13,6 +27,20 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.PasswordInput(attrs={"placeholder": "Confirm Password..."}),
         label="Confirm Password",
+    )
+
+    password = forms.CharField(
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "Your password"},
+        ),
+        error_messages={"required": "Password must not be empty"},
+        # help_text=(
+        #     "Password must have at least one uppercase letter."
+        #     "one lowercasa letter and one number. The lenght should be "
+        #     "at least 8 characters"
+        # ),
+        validators=[strong_password],
     )
 
     class Meta:
@@ -62,7 +90,7 @@ class RegisterForm(forms.ModelForm):
             )
             raise ValidationError(
                 {
-                    "password": value,
+                    # "password": value,
                     "confirm_password": value,
                 }
             )
