@@ -35,11 +35,11 @@ class RegisterForm(forms.ModelForm):
             attrs={"placeholder": "Your password"},
         ),
         error_messages={"required": "Password must not be empty"},
-        # help_text=(
-        #     "Password must have at least one uppercase letter."
-        #     "one lowercasa letter and one number. The lenght should be "
-        #     "at least 8 characters"
-        # ),
+        help_text=(
+            "Password must have at least one uppercase letter."
+            "one lowercasa letter and one number. The lenght should be "
+            "at least 8 characters"
+        ),
         validators=[strong_password],
     )
 
