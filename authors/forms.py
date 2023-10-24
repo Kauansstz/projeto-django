@@ -21,7 +21,7 @@ def strong_password(password):
 class RegisterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["username"].widget.attrs["placeholder"] = "que legal"
+        self.fields["username"].widget.attrs["placeholder"] = "Username..."
 
     confirm_password = forms.CharField(
         required=True,
