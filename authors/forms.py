@@ -51,6 +51,20 @@ class RegisterForm(forms.ModelForm):
         label="E-mail",
         help_text="The e-mail must be valid.",
     )
+    username = forms.CharField(
+        label="Username",
+        help_text=(
+            "Username must have letters, nubemrs or one of those e @.+-_."
+            "The lenght should be between 4 and 150 characters."
+        ),
+        error_messages={
+            "required": "This field must not be empty",
+            "min_length": "Username must have at least 4 characters",
+            "max_length": "Username must have lass than 150 characters",
+        },
+        min_length=4,
+        max_length=150,
+    )
     password = forms.CharField(
         widget=forms.PasswordInput(),
         error_messages={"required": "Password must not be empty"},
@@ -82,12 +96,6 @@ class RegisterForm(forms.ModelForm):
             "first_name": "First name",
             "last_name": "Last name",
             "email": "E-mail",
-        }
-
-        error_messages = {
-            "username": {
-                "required": "This field must not be empty",
-            }
         }
 
     def clean(self):
