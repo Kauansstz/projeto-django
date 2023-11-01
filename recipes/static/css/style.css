@@ -145,7 +145,7 @@ h1,h2,h3,h4,h5,h6{
 
 .main-content-list{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr ));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr ));
     gap: var(--spacing-gutter-large);
 }
 
@@ -162,7 +162,6 @@ h1,h2,h3,h4,h5,h6{
 }
 .recipe-list-item{
     max-width: 64rem;
-    height: fit-content;
 }
 
 .recipe-list-item:hover{
@@ -175,11 +174,6 @@ h1,h2,h3,h4,h5,h6{
 .recipe-title-container{
     padding: var(--spacing-gutter-medium);
     padding-bottom: 2rem ;
-}
-
-.recipe-title-container a{
-    text-decoration: none;
-    color: var(--color-primary-dark);
 }
 
 .recipe-author{
@@ -207,9 +201,9 @@ h1,h2,h3,h4,h5,h6{
 
 .recipe-meta-container {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     padding: var(--spacing-gutter-medium);
-    background: var(--color-gray-1);
+    
 }
 
 .recipe-meta {
@@ -218,18 +212,10 @@ h1,h2,h3,h4,h5,h6{
     flex-shrink: 1;
     flex-grow: 1;
     text-align: center;
-    
 }
-
-
 
 .recipe-meta-text{
     font-size: 1.6rem;
-}
-
-
-.preparation-steps{
-    padding: var(--spacing-gutter-medium);
 }
 
 .recipe-footer a{
@@ -246,20 +232,6 @@ h1,h2,h3,h4,h5,h6{
 .recipe-footer a:hover{
     filter: brightness(2);
 }
-
-.main-content-detail  .recipe-list-item{
-    max-width: 84rem;
-    margin: 0 auto;
-}
-
-.main-content-detail  .recipe-list-item:hover{
-    transform: scale(1);
-    box-shadow: -5px 5px 15px rgba( 0, 0, 0, 0.2);
-    overflow: hidden;
-
-}
-
-
 
 .main-footer{
     display: flex;
@@ -279,145 +251,4 @@ h1,h2,h3,h4,h5,h6{
 
 .main-footer a:hover{
     filter: brightness(.8);
-}
-
-.preparation-steps h1,
-.preparation-steps h2,
-.preparation-steps h3,
-.preparation-steps h4,
-.preparation-steps h5,
-.preparation-steps h6,
-.preparation-steps p,
-.preparation-steps pre{
-    margin: 2rem 0;
-}
-
-.preparation-steps ol,
-.preparation-steps ul{
-    margin: 2rem;
-    padding: 0 2rem;
-}
-
-.response{
-    display: flex;
-    justify-content: center;
-}
-
-.pagination-content {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 1rem 0.5rem;
-  }
-  .pagination .page-item {
-    background: var(--color-gray-3);
-    padding: 0.5rem 1rem;
-  }
-  
-  .pagination .page-link {
-    text-decoration: none;
-    background: var(--color-primary);
-    color: var(--color-white);
-  }
-  
-  .pagination .page-current {
-    background: var(--color-primary-dark);
-  }
-
-.message{
-    padding: 1rem;
-    border-radius: 4px;
-    border: 1px solid var(--color-dark-text);
-    background: var(--color-gray-2);
-    color: var(--color-dark-text);
-}
-
-.message-error{
-    border: 1px solid var(--color-error-dark);
-    background: var(--color-error-light);
-    color: var(--color-error-dark);
-    text-align: center;
-}
-.message-success{
-    border: 1px solid var(--color-success-dark);
-    background: var(--color-success-light);
-    color: var(--color-success-dark);
-    text-align: center;
-}
-.message-warning{
-    border: 1px solid var(--color-warning-dark);
-    background: var(--color-warning-light);
-    color: var(--color-warning-dark);
-    text-align: center;
-}
-.message-alert{
-    border: 1px solid var(--color-alert-dark);
-    background: var(--color-alert-light);
-    color: var(--color-alert-dark);
-    text-align: center;
-}
-.message-info{
-    border: 1px solid var(--color-info-dark);
-    background: var(--color-info-light);
-    color: var(--color-info-dark);
-    text-align: center;
-}
-.message-debug{
-    border: 1px solid var(--color-debug-dark);
-    background: var(--color-debug-light);
-    color: var(--color-debug-dark);
-    text-align: center;
-}
-
-.messages-container{
-    display: flex;
-    flex-flow: column nowrap ;
-    gap: calc(var(--spacing-gutter-medium)/ 2);
-}
-
-.center {
-    text-align: center;
-  }
-
-@media (max-width: 600px) {
-    .main-content-list,
-    .form-content-grid{
-        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-    }
-}
-
-.form-content {
-   max-width: 64rem;
-   margin: 0 auto;
-   margin-bottom: var(--spacing-gutter-medium);
-}
-
-.form-content label .form-content .help-text .errorlist{
-    display: block;
-    margin: .5rem 0;
-    font-size: 1.4rem ;
-    list-style-type: none;
-}
-
-.errorlist{
-    color: var( --color-error-dark);
-}
-
-.form-content input{
-    width:  100%;
-    padding: 1rem;
-    border-radius: .4rem;
-    border:  1px solid var(--color-primary-dark);
-}
-
-.form-content-grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    gap: calc(var(--spacing-gutter-medium) /2) var(--spacing-gutter-medium);
-}
-
-.form-content button{
-    padding: 1rem 2rem;
-    border: none;
-    background: var(--color-primary-dark);
-    color: var(--color-white);
 }
