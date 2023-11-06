@@ -38,32 +38,30 @@ class RegisterForm(forms.ModelForm):
         add_placeholder(self.fields["password"], "Type your password")
         add_placeholder(self.fields["password2"], "Repeat your password")
 
-    first_name = forms.CharField(
-        error_messages={"required": "Write your first name"},
-        label="First name",
-    )
-    last_name = forms.CharField(
-        error_messages={"required": "Write your last name"},
-        label="Last name",
-    )
-    email = forms.EmailField(
-        error_messages={"required": "Email is required"},
-        label="E-mail",
-        help_text="The e-mail must be valid.",
-    )
     username = forms.CharField(
         label="Username",
         help_text=(
-            "Username must have letters, nubemrs or one of those e @.+-_."
-            "The lenght should be between 4 and 150 characters."
+            "Username must have letters, numbers or one of those @.+-_. "
+            "The length should be between 4 and 150 characters."
         ),
         error_messages={
             "required": "This field must not be empty",
             "min_length": "Username must have at least 4 characters",
-            "max_length": "Username must have lass than 150 characters",
+            "max_length": "Username must have less than 150 characters",
         },
         min_length=4,
         max_length=150,
+    )
+    first_name = forms.CharField(
+        error_messages={"required": "Write your first name"}, label="First name"
+    )
+    last_name = forms.CharField(
+        error_messages={"required": "Write your last name"}, label="Last name"
+    )
+    email = forms.EmailField(
+        error_messages={"required": "E-mail is required"},
+        label="E-mail",
+        help_text="The e-mail must be valid.",
     )
     password = forms.CharField(
         widget=forms.PasswordInput(),
@@ -91,12 +89,6 @@ class RegisterForm(forms.ModelForm):
             "email",
             "password",
         ]
-        labels = {
-            "username": "Username",
-            "first_name": "First name",
-            "last_name": "Last name",
-            "email": "E-mail",
-        }
 
     def clean_email(self):
         email = self.cleaned_data.get("email", "")

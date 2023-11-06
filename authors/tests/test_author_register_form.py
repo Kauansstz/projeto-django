@@ -26,8 +26,8 @@ class AuthorRegisterFormUnitTest(TestCase):
             (
                 "username",
                 (
-                    "Username must have letters, nubemrs or one of those e @.+-_."
-                    "The lenght should be between 4 and 150 characters."
+                    "Username must have letters, numbers or one of those @.+-_. "
+                    "The length should be between 4 and 150 characters."
                 ),
             ),
             ("email", "The e-mail must be valid."),
@@ -81,15 +81,15 @@ class AuthorRegisterFormIntegrationTest(DjangoTestCase):
             ("last_name", "Write your last name"),
             ("password", "Password must not be empty"),
             ("password2", "Please, repeat your password"),
-            ("email", "Email is required"),
+            ("email", "E-mail is required"),
         ]
     )
     def test_fields_cannot_be_empty(self, field, msg):
         self.form_data[field] = ""
         url = reverse("authors:create")
         response = self.client.post(url, data=self.form_data, follow=True)
-        self.assertIn(msg, response.content.decode("utf-8"))
         self.assertIn(msg, response.context["form"].errors.get(field))
+        self.assertIn(msg, response.content.decode("utf-8"))
 
     def test_username_field_min_lengt_should_be_4(self):
         self.form_data["username"] = "hoa"
@@ -105,7 +105,7 @@ class AuthorRegisterFormIntegrationTest(DjangoTestCase):
         url = reverse("authors:create")
         response = self.client.post(url, data=self.form_data, follow=True)
 
-        msg = "Username must have lass than 150 characters"
+        msg = "Username must have less than 150 characters"
         # self.assertIn(msg, response.content.decode("utf-8"))
         self.assertIn(msg, response.context["form"].errors.get("username"))
 
