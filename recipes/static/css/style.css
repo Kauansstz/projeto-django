@@ -426,6 +426,9 @@
   .m-y {
     margin: var(--spacing-gutter-medium) 0;
   }
+  .login-message{
+    margin: 4rem 0;
+  }
   
   @media (max-width: 600px) {
     .main-content-list,

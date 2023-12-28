@@ -71,7 +71,7 @@ def login_create(request):
     else:
         messages.error(request, "Invalid username or password")
 
-    return redirect(login_url)
+    return redirect(reverse("authors:dashboad"))
 
 
 @login_required(login_url="authors:login_view", redirect_field_name="next")
@@ -84,3 +84,8 @@ def logout_view(request):
 
     logout(request)
     return redirect(reverse("authors:login"))
+
+
+@login_required(login_url="authors:login_view", redirect_field_name="next")
+def dashboad(request):
+    return render(request, "authors/pages/dashboad.html")
