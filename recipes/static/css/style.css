@@ -67,7 +67,13 @@
   h6 {
     font-family: var(--font-headings);
   }
-  
+  a{
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+  img{
+    max-width: 100%;
+  }
   .container {
     max-width: 144rem;
     margin: 0 auto;
@@ -342,6 +348,7 @@
     color: var(--color-error-dark);
   }
   
+
   .form-content input ,
   .form-content  select,
   .form-content textarea {
