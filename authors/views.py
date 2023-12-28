@@ -6,6 +6,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, RegisterForm
+from .forms.recipe_form import AuthorRecipeForm
 from recipes.models import Recipe
 
 
@@ -85,6 +86,28 @@ def logout_view(request):
 
     logout(request)
     return redirect(reverse("authors:login"))
+
+
+@login_required(login_url="authors:login_view", redirect_field_name="next")
+def dashboad_recipe_edit(request, id):
+    recipe = Recipe.objects.filter(
+        is_published=False,
+        author=request.user,
+        pk=id,
+    ).first()
+    if not recipe:
+        raise Http404
+
+    form = AuthorRecipeForm(request.POST or None, instance=recipe)
+
+    return render(
+        request,
+        "authors/pages/dashboad_recipe.html",
+        {
+            "recipes": recipe,
+            "form": form,
+        },
+    )
 
 
 @login_required(login_url="authors:login_view", redirect_field_name="next")

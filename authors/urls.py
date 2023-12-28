@@ -5,6 +5,7 @@ from .views import (
     login_create,
     login_view,
     logout_view,
+    dashboad_recipe_edit,
     dashboad,
 )
 
@@ -17,5 +18,10 @@ urlpatterns = [
     path("login/", login_view, name="login"),  # type: ignore
     path("login/create/", login_create, name="login_create"),  # type: ignore
     path("logout/", logout_view, name="logout"),  # type: ignore
+    path(
+        "dashboad/recipe/<int:id>/edit/",
+        dashboad_recipe_edit,
+        name="dashboad_recipe_edit",
+    ),
     path("dashboad/", dashboad, name="dashboad"),
 ]
