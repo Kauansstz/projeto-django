@@ -430,6 +430,24 @@
     margin: 4rem 0;
   }
   
+  .authors-dashboard-conteiner{
+    max-width: 64rem;
+    padding: var(--spacing-gutter-medium);
+    text-align: left;
+    margin: 0 auto;
+  }
+  .authors-dashboard-conteiner h3,
+  .authors-dashboard-conteiner p,
+  .authors-dashboard-conteiner ul, li, a {
+    list-style-type: none;
+    margin: 1rem 0;
+    
+    
+  }
+  .authors-dashboard-conteiner a{
+    color: var(--color-gray-7);
+    text-decoration: none;
+  }
   @media (max-width: 600px) {
     .main-content-list,
     .form-content-grid {
