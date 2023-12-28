@@ -342,7 +342,9 @@
     color: var(--color-error-dark);
   }
   
-  .form-content input {
+  .form-content input ,
+  .form-content  select,
+  .form-content textarea {
     width: 100%;
     padding: 1rem;
     border-radius: 0.4rem;
@@ -444,11 +446,18 @@
     
     
   }
-  .authors-dashboard-conteiner a{
-    color: var(--color-gray-7);
-    text-decoration: none;
-  }
-  @media (max-width: 600px) {
+
+.left{
+  text-align: left;
+}
+.authors-dashboard-conteiner a{
+  color: var(--color-gray-7);
+  text-decoration: none;
+}
+.span-2{
+  grid-column: span 2;
+}
+@media (max-width: 600px) {
     .main-content-list,
     .form-content-grid {
       grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
