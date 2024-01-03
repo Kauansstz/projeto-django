@@ -98,7 +98,23 @@ def dashboad_recipe_edit(request, id):
     if not recipe:
         raise Http404
 
-    form = AuthorRecipeForm(request.POST or None, instance=recipe)
+    form = AuthorRecipeForm(
+        request.POST or None,
+        instance=recipe,
+        files=request.FILES or None,
+    )
+
+    if form.is_valid():
+        recipe = form.save(commit=False)
+
+        recipe.authors = request.user
+        recipe.preparation_steps_is_html = False
+        recipe.is_published = False
+
+        recipe.save()
+
+        messages.success(request, "Sua receita foi salva com sucesso!")
+        return redirect(reverse("authors:dashboad_recipe_edit", args=(id,)))
 
     return render(
         request,
