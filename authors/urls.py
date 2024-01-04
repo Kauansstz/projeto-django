@@ -7,6 +7,7 @@ from .views import (
     logout_view,
     dashboad_recipe_edit,
     dashboad,
+    dashboard_recipe_new,
 )
 
 
@@ -18,10 +19,11 @@ urlpatterns = [
     path("login/", login_view, name="login"),  # type: ignore
     path("login/create/", login_create, name="login_create"),  # type: ignore
     path("logout/", logout_view, name="logout"),  # type: ignore
+    path("dashboad/", dashboad, name="dashboad"),
+    path("dashboad/recipe/new/", dashboard_recipe_new, name="dashboad_recipe_new"),
     path(
         "dashboad/recipe/<int:id>/edit/",
         dashboad_recipe_edit,
         name="dashboad_recipe_edit",
     ),
-    path("dashboad/", dashboad, name="dashboad"),
 ]
