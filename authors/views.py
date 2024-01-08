@@ -117,7 +117,7 @@ def dashboad_recipe_edit(request, id):
 
     return render(
         request,
-        "authors/pages/dashboad_recipe.html",
+        "authors/pages/dashboard_recipe.html",
         {
             "recipes": recipe,
             "form": form,
@@ -130,7 +130,7 @@ def dashboad(request):
     recipes = Recipe.objects.filter(is_published=False, author=request.user)
     return render(
         request,
-        "authors/pages/dashboad.html",
+        "authors/pages/dashboard.html",
         {
             "recipes": recipes,
         },
@@ -154,10 +154,10 @@ def dashboard_recipe_new(request):
         recipe.save()
 
         messages.success(request, "Salvo com sucesso!")
-        return redirect(reverse("authors:dashboad_recipe_edit", args=(recipe.id)))
+        return redirect(reverse("authors:dashboard_recipe_edit", args=(recipe.id)))
 
     return render(
         request,
         "authors/pages/dashboad_recipe.html",
-        context={"form": form, "form_action": reverse("authors:dashboad_recipe_new")},
+        context={"form": form, "form_action": reverse("authors:dashboard_recipe_new")},
     )
