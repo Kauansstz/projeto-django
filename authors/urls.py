@@ -23,13 +23,13 @@ urlpatterns = [
     path("dashboard/", dashboad, name="dashboard"),
     path("dashboard/recipe/new/", dashboard_recipe_new, name="dashboard_recipe_new"),
     path(
+        "dashboard/recipe/delete/",
+        dashboad_recipe_delete,
+        name="dashboard_recipe_delete",
+    ),
+    path(
         "dashboard/recipe/<int:id>/edit/",
         dashboad_recipe_edit,
         name="dashboard_recipe_edit",
-    ),
-    path(
-        "dashboard/recipe/<int:id>/delete/",
-        dashboad_recipe_delete,
-        name="dashboard_recipe_delete",
     ),
 ]
