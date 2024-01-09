@@ -8,6 +8,7 @@ from .views import (
     dashboad_recipe_edit,
     dashboad,
     dashboard_recipe_new,
+    dashboad_recipe_delete,
 )
 
 
@@ -25,5 +26,10 @@ urlpatterns = [
         "dashboard/recipe/<int:id>/edit/",
         dashboad_recipe_edit,
         name="dashboard_recipe_edit",
+    ),
+    path(
+        "dashboard/recipe/<int:id>/delete/",
+        dashboad_recipe_delete,
+        name="dashboard_recipe_delete",
     ),
 ]
