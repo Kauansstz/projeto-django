@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import (
+from authors.views.all import (
     register_view,
     register_create,
     login_create,
