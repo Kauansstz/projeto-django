@@ -72,7 +72,7 @@ def login_create(request):
     else:
         messages.error(request, "Invalid username or password")
 
-    return redirect(reverse("authors:dashboad"))
+    return redirect(reverse("authors:dashboard"))
 
 
 @login_required(login_url="authors:login", redirect_field_name="next")
