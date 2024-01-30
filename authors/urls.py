@@ -12,7 +12,9 @@ urlpatterns = [
     path("logout/", views.logout_view, name="logout"),  # type: ignore
     path("dashboard/", views.dashboad, name="dashboard"),
     path(
-        "dashboard/recipe/new/", views.dashboard_recipe_new, name="dashboard_recipe_new"
+        "dashboard/recipe/new/",
+        views.DashboardRecipe.as_view(),
+        name="dashboard_recipe_new",
     ),
     path(
         "dashboard/recipe/delete/",
