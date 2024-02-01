@@ -1,5 +1,3 @@
-from typing import Any
-from django.db.models.query import QuerySet
 from django.shortcuts import render, get_list_or_404
 from .models import Recipe
 from django.db.models import Q
@@ -35,6 +33,10 @@ class RecipeListViewBase(ListView):
             }
         )
         return ct
+
+
+class RecipeListViewHome(RecipeListViewBase):
+    template_name = "recipes/pages/home.html"
 
 
 def home(request):
