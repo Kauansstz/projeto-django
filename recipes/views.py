@@ -1,12 +1,40 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, get_list_or_404
 from .models import Recipe
 from django.db.models import Q
 from django.http import Http404
 from utils.paginitions import make_pagination
-
+from django.views.generic import ListView
 import os
 
 PER_PAGE = int(os.environ.get("PER_PAGE", 6))
+
+
+class RecipeListViewBase(ListView):
+    model = Recipe
+    paginate_by = None  # type: ignore
+    context_object_name = "recipes"
+    ordering = ["-id"]
+    template_name = "recipes/pages/home.html"
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super().get_queryset(*args, **kwargs)
+        qs = qs.filter(is_published=True)
+        return qs
+
+    def get_context_data(self, *args, **kwargs):
+        ct = super().get_context_data(*args, **kwargs)
+        page_obj, pagination_page = make_pagination(
+            self.request, ct.get("recipes"), PER_PAGE
+        )
+        ct.update(
+            {
+                "recipes": page_obj,
+                "pagination_page": pagination_page,
+            }
+        )
+        return ct
 
 
 def home(request):
