@@ -7,9 +7,9 @@ urlpatterns = [
     path(
         "recipes/search/", views.RecipeListViewSearch.as_view(), name="recipes-search"
     ),
-    path("recipes/<int:id>/", views.recipe, name="recipes-recipe"),
+    path("recipes/<int:id>/", views.RecipeDetail.as_view(), name="recipes-recipe"),
     path(
-        "recipes/category/<int:id>/",
+        "recipes/category/<int:pk>/",
         views.RecipeListViewCategory.as_view(),
         name="recipes-category",
     ),
