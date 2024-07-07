@@ -1,8 +1,10 @@
 from typing import Any
+from django.http.response import HttpResponse as HttpResponse
 from django.shortcuts import render, get_list_or_404
 from .models import Recipe
 from django.db.models import Q
 from django.http import Http404
+from django.http import JsonResponse
 from utils.paginitions import make_pagination
 from django.views.generic import ListView, DetailView
 import os
@@ -38,6 +40,15 @@ class RecipeListViewBase(ListView):
 
 class RecipeListViewHome(RecipeListViewBase):
     template_name = "recipes/pages/home.html"
+
+
+class RecipeListViewHomeApi(RecipeListViewBase):
+    template_name = "recipes/pages/home.html"
+
+    def render_to_response(self, context, **response_kwargs):
+        recipes = self.get_context_data()["recipes"]
+        recipes_dict = recipes.object_list.values()
+        return JsonResponse(list(recipes_dict), safe=False)
 
 
 class RecipeListViewCategory(RecipeListViewBase):

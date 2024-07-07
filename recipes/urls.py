@@ -13,4 +13,9 @@ urlpatterns = [
         views.RecipeListViewCategory.as_view(),
         name="recipes-category",
     ),
+    path(
+        "recipes/api/v1/",
+        views.RecipeListViewHomeApi.as_view(),
+        name="recipes_api_v1",
+    ),
 ]
